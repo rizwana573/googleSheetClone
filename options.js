@@ -7,7 +7,6 @@ const italicButton = document.getElementById("italic");
 const underlinedButton = document.getElementById("underlined");
 
 // activeCell defines which cell is selected / active.
-// intially it will null indicating that no cell is selected.
 let activeCell = null;
 
 let activeOptionsState;
@@ -22,38 +21,11 @@ function toggleButtonsStyle(button, isSelected) {
 }
 
 function highlightOptionButtonsOnFocus() {
-  // check if the cell is in the bold state or not .
-  // if (activeOptionsState.isBoldSelected) {
-  //   // currently selected cell in the bold state.
-  //   boldButton.classList.add("active-option");
-  // } else {
-  //   boldButton.classList.remove("active-option");
-  // }
-
   toggleButtonsStyle(boldButton, activeOptionsState.isBoldSelected);
-
-  // check if the selected cell is italic or not .
-  // if (activeOptionsState.isItalicSelected) {
-  //   // the current cell is italic text.
-  //   italicButton.classList.add("active-option");
-  // } else {
-  //   italicButton.classList.remove("active-option");
-  // }
   toggleButtonsStyle(italicButton, activeOptionsState.isItalicSelected);
-
-  // check if the selected cell is underline or not .
-
-  // if (activeOptionsState.isUnderLineSelected) {
-  //   // the cell is underlined
-  //   underlinedButton.classList.add("active-option");
-  // } else {
-  //   underlinedButton.classList.remove("active-option");
-  // }
   toggleButtonsStyle(underlinedButton, activeOptionsState.isUnderLineSelected);
-
   // get the textAlign value
   highlightTextAlignButtons(activeOptionsState.textAlign);
-  // highlightTextAlignButtons("start" | "right" | "center")
 }
 
 // below function will be triggered whenever cell is focused.
@@ -132,9 +104,6 @@ function onClickUnderline(underlinedButton) {
 
 // the below function task is to take the textAlign value and decides which alignment button needs to highlighted or not.
 function highlightTextAlignButtons(textAlignValue) {
-  // textAlignValue === "left" => we have to highlight only left button
-  // textAlignValue === "right" => we have to highlight only right button
-  // textAlignValue === "center" => we have to highlight only center button
   for (let i = 0; i < textAlignElements.length; i++) {
     if (textAlignElements[i].getAttribute("data-value") === textAlignValue) {
       textAlignElements[i].classList.add("active-option");

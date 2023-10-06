@@ -32,8 +32,7 @@ function createAndAppendRow(rowNumber) {
   body.appendChild(row);
 }
 
-// create 100 rows call the `createAndAppendRow` function for 100 times.
-
-for (let i = 1; i <= 100; i++) {
+// create 1000 rows
+for (let i = 1; i <= 1000; i++) {
   createAndAppendRow(i);
 }

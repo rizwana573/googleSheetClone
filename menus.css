@@ -1,8 +1,6 @@
 .menus {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
+  display: block;
+  text-align: center;
 }
 
 .active-option {
@@ -12,9 +10,54 @@
 .menus > div {
   padding: 10px;
   cursor: pointer;
+  vertical-align: middle;
   transition: 0.5s;
-  border-radius: 4pxß;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0 5px;
 }
 .menus > div:hover {
   background-color: #d0d8e0aa;
+}
+
+#sheet-title img {
+  width: 40px;
+}
+#sheet-title input {
+  border:none;
+  background: transparent;
+  padding: 5px;
+  font-size: 20px;
+}
+#sheet-title input::placeholder{
+ border:none;
+  padding:10px; 
+  background: transparent;
+}
+
+div#sheet-title {
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ margin: 10px auto;
+}
+div#sheet-title:hover{
+ background: inherit;
+}
+@media only screen and (min-width:1024px){
+  .menus {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+  }
+  #sheet-title img {
+    width: 65px;
+  }
+  div#sheet-title{
+    margin: 0 5px;
+  }
+  .menus > div {
+    display: block;
+  }
 }

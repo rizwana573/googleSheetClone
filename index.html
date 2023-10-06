@@ -1,83 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excel</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="menus.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="options">
-      <div class="menus">
-        <div id="bold" onclick="onClickBold(this)">B</div>
-        <div id="italic" onclick="onClickItalic(this)">I</div>
-        <div id="underlined" onclick="onClickUnderline(this)">U</div>
 
-        <div
-          class="material-icons active-option text-align"
-          data-value="start"
-          onclick="onClickTextAlign(this)"
-        >
-          format_align_left
-        </div>
-        <div
-          class="material-icons text-align"
-          data-value="right"
-          onclick="onClickTextAlign(this)"
-        >
-          format_align_right
-        </div>
-        <div
-          class="material-icons text-align"
-          data-value="center"
-          onclick="onClickTextAlign(this)"
-        >
-          format_align_center
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Sheet</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="menus.css" />
+  <link rel="icon" href="sheetIcon.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Space+Grotesk:wght@700&display=swap"
+    rel="stylesheet">
+</head>
 
-        <div id="text-color">
-          <label for="color-picker"
-            ><span class="material-icons"> border_color </span></label
-          >
-          <input
-            onchange="onChangeTextColor(this)"
-            type="color"
-            id="color-picker"
-            style="width: 0; height: 0"
-          />
-        </div>
+<body>
+  <div id="options">
+    <div class="menus">
+      <div id="sheet-title"><img src="gsheetImg.png"><input type="textbox" placeholder="Untitled Spreadsheet"></div>
+      <div id="bold" onclick="onClickBold(this)">B</div>
+      <div id="italic" onclick="onClickItalic(this)">I</div>
+      <div id="underlined" onclick="onClickUnderline(this)">U</div>
 
-        <div id="bg-color">
-          <label for="bgcolor-picker"
-            ><span class="material-icons"> format_color_fill </span></label
-          >
-          <input
-            onchange="onChangeBackgroundColor(this)"
-            type="color"
-            id="bgcolor-picker"
-            style="width: 0; height: 0"
-          />
-        </div>
+      <div class="material-icons active-option text-align" data-value="start"
+        onclick="onClickTextAlign(this)">
+        format_align_left
+      </div>
+      <div class="material-icons text-align" data-value="right" onclick="onClickTextAlign(this)">
+        format_align_right
+      </div>
+      <div class="material-icons text-align" data-value="center" onclick="onClickTextAlign(this)">
+        format_align_center
       </div>
 
-      <span id="active-cell">null</span>
+      <div id="text-color">
+        <label for="color-picker"><span class="material-icons"> border_color </span></label>
+        <input onchange="onChangeTextColor(this)" type="color" id="color-picker" />
+      </div>
+
+      <div id="bg-color">
+        <label for="bgcolor-picker"><span class="material-icons"> format_color_fill </span></label>
+        <input onchange="onChangeBackgroundColor(this)" type="color" id="bgcolor-picker" />
+      </div>
     </div>
 
-    <main style="width: 100vw; margin: auto; height: 100vh; overflow: scroll">
-      <div id="header">
-        <b style="position: sticky; left: 0; top: 0; background-color: white"
-          >S.No</b
-        >
-      </div>
-      <section id="body"></section>
-    </main>
+    <span id="active-cell"></span>
+  </div>
 
-    <script src="./options.js"></script>
-    <script src="./index.js"></script>
-  </body>
+  <main>
+    <div id="header">
+      <b class="serialNo">S.No</b>
+    </div>
+    <section id="body"></section>
+  </main>
+
+  <script src="./options.js"></script>
+  <script src="./index.js"></script>
+</body>
+
 </html>
