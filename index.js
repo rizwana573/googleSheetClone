@@ -23,6 +23,7 @@ function createAndAppendRow(rowNumber) {
     } else {
       // This represents the empty cell
       const cell = document.createElement("div");
+      cell.classList.add("cells");
       cell.id = `${String.fromCharCode(i)}${rowNumber}`; // dynamic and unique id. COLROW => examples: C7, M8, A3
       cell.contentEditable = "true";
       cell.addEventListener("focus", onCellFocus);

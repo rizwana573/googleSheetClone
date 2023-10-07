@@ -160,6 +160,7 @@ addSheet.addEventListener("click", function(){
    clonedBody.id = "cellBody" + num;
 
    activeSheet();
+   cellProps();
 });
 
 function activeSheet(){
@@ -171,17 +172,7 @@ function activeSheet(){
       ele.classList.remove("active");
      // document.querySelectorAll(".cellBody");
     });
-    this.classList.add("active");
-    
-
-    // let cellBody = document.getElementsByClassName("cellBody");
-    // for( let i=0;i<cellBody.length;i++){
-    //   console.log(cellBody[i].id);
-    //     cellBody[i].style.display="none";
-    //     if(cellBody[i].id == "cellBody"+ num){
-    //     }
-    // }
-    
+    this.classList.add("active");    
   })
  ); 
  let cellBody = document.getElementsByClassName("cellBody");
@@ -190,16 +181,20 @@ function activeSheet(){
   for( let j=0;j<cellBody.length;j++){
     sheetName[i].addEventListener("click", function(){
       let num = sheetName[i].innerHTML.split(" ")[1];
-      console.log("num ", num);
-      console.log("1 ", cellBody[j].id);
       cellBody[j].style.display="none";
       if(cellBody[j].id == "cellBody"+ num){
-        console.log("2 ", cellBody[j]);
         cellBody[i].style.display="block";
       }
     })
       
     }
  }
+}
+
+function cellProps(){
+  let cell = document.querySelectorAll(".cells");
+  for(let i=0;i<cell.length;i++){
+    cell[i].addEventListener("focus", onCellFocus);
+  }
 }
 
