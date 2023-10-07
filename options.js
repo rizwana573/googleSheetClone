@@ -5,28 +5,15 @@ const textAlignElements = document.getElementsByClassName("text-align");
 const boldButton = document.getElementById("bold");
 const italicButton = document.getElementById("italic");
 const underlinedButton = document.getElementById("underlined");
+const addSheet = document.getElementById("addSheet");
+const sheetName = document.getElementsByClassName("sheetName");
+
+
 
 // activeCell defines which cell is selected / active.
 let activeCell = null;
 
 let activeOptionsState;
-
-function toggleButtonsStyle(button, isSelected) {
-  if (isSelected) {
-    // currently selected cell in the bold state.
-    button.classList.add("active-option");
-  } else {
-    button.classList.remove("active-option");
-  }
-}
-
-function highlightOptionButtonsOnFocus() {
-  toggleButtonsStyle(boldButton, activeOptionsState.isBoldSelected);
-  toggleButtonsStyle(italicButton, activeOptionsState.isItalicSelected);
-  toggleButtonsStyle(underlinedButton, activeOptionsState.isUnderLineSelected);
-  // get the textAlign value
-  highlightTextAlignButtons(activeOptionsState.textAlign);
-}
 
 // below function will be triggered whenever cell is focused.
 function onCellFocus(e) {
@@ -53,12 +40,26 @@ function onCellFocus(e) {
   highlightOptionButtonsOnFocus();
 }
 
-function onClickBold(boldButton) {
+// toggle options menu class 
+function toggleButtonsStyle(button, isSelected) {
+  if (isSelected) {
+    button.classList.add("active-option");
+  } else {
+    button.classList.remove("active-option");
+  }
+}
+
+//toggling the classes of menu options based on selection
+function highlightOptionButtonsOnFocus() {
+  toggleButtonsStyle(boldButton, activeOptionsState.isBoldSelected);
+  toggleButtonsStyle(italicButton, activeOptionsState.isItalicSelected);
+  toggleButtonsStyle(underlinedButton, activeOptionsState.isUnderLineSelected);
+  highlightTextAlignButtons(activeOptionsState.textAlign);
+}
+
+
   // this function will be triggered when user clicks on the Bold button.
-  /**
-   * 1. toggle `active-option` class for the button.
-   * 2. get the selected cell.
-   */
+function onClickBold(boldButton) {
   boldButton.classList.toggle("active-option");
   if (activeCell) {
     if (activeOptionsState.isBoldSelected === false) {
@@ -72,10 +73,8 @@ function onClickBold(boldButton) {
   }
 }
 
+  // this function will be triggered when user clicks on the italic button.
 function onClickItalic(italicButton) {
-  /**
-   * 1. toggle the active-option class for the italic button.
-   */
   italicButton.classList.toggle("active-option");
   if (activeCell) {
     if (activeOptionsState.isItalicSelected) {
@@ -88,6 +87,7 @@ function onClickItalic(italicButton) {
   }
 }
 
+  // this function will be triggered when user clicks on the underline button.
 function onClickUnderline(underlinedButton) {
   underlinedButton.classList.toggle("active-option");
   if (activeCell) {
@@ -113,6 +113,7 @@ function highlightTextAlignButtons(textAlignValue) {
   }
 }
 
+ // this function will be triggered when user clicks on the text align buttons.
 function onClickTextAlign(textAlignButton) {
   let selectedValue = textAlignButton.getAttribute("data-value");
   highlightTextAlignButtons(selectedValue);
@@ -124,6 +125,7 @@ function onClickTextAlign(textAlignButton) {
   }
 }
 
+ // this function will be triggered when user clicks on the text color button.
 function onChangeTextColor(textColorInput) {
   let selectedColor = textColorInput.value;
   if (activeCell) {
@@ -132,6 +134,7 @@ function onChangeTextColor(textColorInput) {
   }
 }
 
+ // this function will be triggered when user clicks on the bg color button.
 function onChangeBackgroundColor(textColorInput) {
   let selectedColor = textColorInput.value;
   if (activeCell) {
@@ -139,3 +142,48 @@ function onChangeBackgroundColor(textColorInput) {
     activeOptionsState.backgroundColor = selectedColor;
   }
 }
+
+addSheet.addEventListener("click", function(){
+  let name = document.getElementsByClassName("sheetName");
+  let x = document.createElement("span");
+   x.classList.add("sheetName");
+   let num = parseInt(name[name.length - 1].innerHTML.split(" ")[1]);
+   num = num+1;
+   x.innerHTML = "Sheet " + num;
+   x.id="sheetName"+num;
+   document.getElementById("footer").appendChild(x);
+
+   let cellBody = document.getElementById("cellBody1");
+   let clonedBody = cellBody.cloneNode(true);
+  
+   document.getElementById("mainContent").append(clonedBody);
+   clonedBody.id = "cellbody" + num;
+
+   activeSheet();
+});
+
+function activeSheet(){
+  activeCell = null;
+  document.querySelectorAll(".sheetName").forEach((ele) =>
+  ele.addEventListener("click", function (event) {
+    event.preventDefault();
+    document.querySelectorAll(".sheetName").forEach((ele) => {
+      ele.classList.remove("active");
+     // document.querySelectorAll(".cellBody");
+    });
+    this.classList.add("active");
+    let num = this.innerHTML.split(" ")[1];
+
+    let cellBody = document.getElementsByClassName("cellBody");
+    // for( let i=0;i<cellBody.length;i++){
+    //   console.log(cellBody[i].id);
+    //     cellBody[i].style.display="none";
+    //     if(cellBody[i].id == "cellBody"+ num){
+    //     }
+    // }
+    
+    
+  })
+ ); 
+}
+

@@ -32,7 +32,7 @@ function createAndAppendRow(rowNumber) {
   body.appendChild(row);
 }
 
-// create 1000 rows
-for (let i = 1; i <= 1000; i++) {
+// create 100 rows
+for (let i = 1; i <= 100; i++) {
   createAndAppendRow(i);
 }

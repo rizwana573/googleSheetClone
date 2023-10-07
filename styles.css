@@ -5,13 +5,12 @@
 }
 body{
   scroll-behavior: smooth;
-  /* width: max-content; */
-  /* overflow-y: hidden; */
+  box-sizing: border-box;
 }
 main{
   width: 100%;
   margin: auto;
-  height: 100vh;
+  height: calc(100vh - 50px);
   overflow-y: scroll;
 }
 #header {
@@ -76,9 +75,36 @@ main{
   width: fit-content;
   margin-top: 130px;
 }
+footer {
+  padding: 5px 30px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+span#addSheet {
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 12px;
+}
+span#addSheet:hover {
+  background: #d0d8e0aa;
+  border-radius: 50%;
+}
+span.sheetName {
+  cursor: pointer;
+  font-weight:600;
+}
+span.sheetName.active{
+  color:blue;
+}
 @media only screen and (min-width:1024px){
   #header {
     top: 130px;
+  }
+  #options{
+    width: calc(100% - 46px);
   }
   
 }
