@@ -157,7 +157,7 @@ addSheet.addEventListener("click", function(){
    let clonedBody = cellBody.cloneNode(true);
   
    document.getElementById("mainContent").append(clonedBody);
-   clonedBody.id = "cellbody" + num;
+   clonedBody.id = "cellBody" + num;
 
    activeSheet();
 });
@@ -172,9 +172,9 @@ function activeSheet(){
      // document.querySelectorAll(".cellBody");
     });
     this.classList.add("active");
-    let num = this.innerHTML.split(" ")[1];
+    
 
-    let cellBody = document.getElementsByClassName("cellBody");
+    // let cellBody = document.getElementsByClassName("cellBody");
     // for( let i=0;i<cellBody.length;i++){
     //   console.log(cellBody[i].id);
     //     cellBody[i].style.display="none";
@@ -182,8 +182,24 @@ function activeSheet(){
     //     }
     // }
     
-    
   })
  ); 
+ let cellBody = document.getElementsByClassName("cellBody");
+
+ for(let i=0;i<sheetName.length;i++){
+  for( let j=0;j<cellBody.length;j++){
+    sheetName[i].addEventListener("click", function(){
+      let num = sheetName[i].innerHTML.split(" ")[1];
+      console.log("num ", num);
+      console.log("1 ", cellBody[j].id);
+      cellBody[j].style.display="none";
+      if(cellBody[j].id == "cellBody"+ num){
+        console.log("2 ", cellBody[j]);
+        cellBody[i].style.display="block";
+      }
+    })
+      
+    }
+ }
 }
 
