@@ -73,7 +73,7 @@ main{
 
 #body {
   width: fit-content;
-  margin-top: 130px;
+  margin-top: 175px;
 }
 footer {
   padding: 5px 30px;
@@ -105,6 +105,9 @@ span.sheetName.active{
   }
   #options{
     width: calc(100% - 46px);
+  }
+  #body {
+    margin-top: 130px;
   }
   
 }
